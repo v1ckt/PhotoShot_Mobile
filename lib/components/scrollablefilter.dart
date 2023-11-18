@@ -14,7 +14,8 @@ class ScrollableFilter extends StatefulWidget {
 
 class _ScrollableFilterState extends State<ScrollableFilter> {
   int selectedIndex = 0;
-  final itemWidth = 100; 
+  dynamic scrollto;
+  final itemWidth = 100;
   final scrollController = ScrollController();
 
   @override
@@ -30,21 +31,32 @@ class _ScrollableFilterState extends State<ScrollableFilter> {
             setState(() {
               selectedIndex = index;
             });
+            if (selectedIndex <= 1) {
+              scrollto = 0.0;
+            } else if (selectedIndex == widget.itemsCount! - 2) {
+              scrollto = (widget.itemsCount! * itemWidth).toDouble();
+            } else {
+              scrollto = (selectedIndex * itemWidth -
+                      MediaQuery.of(context).size.width / 2.1 +
+                      itemWidth / 2)
+                  .toDouble();
+            }
+
             scrollController.animateTo(
-              selectedIndex * itemWidth - MediaQuery.of(context).size.width / 2 + itemWidth / 2,
+              scrollto,
               duration: const Duration(milliseconds: 150),
               curve: Curves.easeInOut,
             );
           },
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.center,
             height: 100,
+            width: itemWidth.toDouble(),
             decoration: BoxDecoration(
               color: selectedIndex == index
                   ? const Color(0x33888888)
                   : Colors.transparent,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(30),
             ),
             child: Text(widget.items![index]),
           ),

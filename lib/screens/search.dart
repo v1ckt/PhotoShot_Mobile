@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:photoshot/components/feedcard.dart';
 import 'package:photoshot/components/body_elements/navbar.dart';
 import 'package:photoshot/components/body_elements/topbar.dart';
 import 'package:photoshot/components/body_elements/customscaffold.dart';
+import 'package:photoshot/components/resultsitem.dart';
 
 class SearchPage extends StatelessWidget {
   final List<String> listimages = [
@@ -20,30 +20,9 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> user01 = {
-      'name': 'João',
-      'profilepic': listimages[0],
-      'photo': listimages[7],
-    };
-    final Map<String, dynamic> user02 = {
-      'name': 'João',
-      'profilepic': listimages[0],
-      'photo': listimages[4],
-    };
-
     return CustomScaffold(
         appBar: buildAppBar('search'),
-        body: ListView(
-          padding: const EdgeInsets.only(top: 80, bottom: 50),
-          children: [
-            const Padding(padding: EdgeInsets.only(top: 60)),
-            // BODY
-            Feedcard(userdata: user02),
-            Feedcard(userdata: user02),
-            Feedcard(userdata: user02),
-          ],
-        ),
-        bottomNavigationBar: const NavBar()
-        );
+        body: ResultList(imgList: listimages),
+        bottomNavigationBar: const NavBar());
   }
 }

@@ -4,6 +4,7 @@ import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/comment.dart';
 import 'package:photoshot/components/sliderbox.dart';
 import 'package:photoshot/components/morepopup.dart';
+import 'package:photoshot/components/scrollablefilter.dart';
 
 class Feedcard extends StatefulWidget {
   final Map<String, dynamic> userdata;
@@ -20,6 +21,12 @@ class Feedcard extends StatefulWidget {
 
 class _FeedcardState extends State<Feedcard> {
   late Widget _child;
+  List<String>? itemsList = [
+    'Iluminação',
+    'Cores',
+    'Efeitos',
+    'Detalhes',
+  ];
 
   @override
   void initState() {
@@ -114,15 +121,15 @@ class _FeedcardState extends State<Feedcard> {
         break;
       case 'adjust':
         _child = Container(
-          padding: const EdgeInsets.only(bottom: 17),
+          padding: const EdgeInsets.only(bottom: 17, left: 10, right: 10),
           // height: 500,
           child: Column(
             children: [
               const Text('Ajustes da Foto', style: TextStyle(fontSize: 18)),
-              const Text('AQUI FICARÁ O SLIDER DE CATEGORIA'),
+              ScrollableFilter(items: itemsList, itemsCount: itemsList!.length),
               // input
               Container(
-                padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: const EdgeInsets.only(top: 15, left: 5, right: 5),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -193,6 +200,7 @@ class _FeedcardState extends State<Feedcard> {
                 const SizedBox(height: 5),
                 //Foto
                 SizedBox(
+                  height: 200,
                   width: MediaQuery.of(context).size.width * 1,
                   child: Image.network(
                     widget.userdata['photo'],

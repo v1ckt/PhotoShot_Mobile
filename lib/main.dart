@@ -4,6 +4,7 @@ import 'package:photoshot/components/buttons.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
 import 'package:photoshot/screens/oldhome.dart';
+import 'package:photoshot/screens/search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,8 +42,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const MyHomePage(title: 'Login'),
-      // home: SearchPage(),
-      home: HomePage(),
+      home: SearchPage(),
+      // home: HomePage(),
       // home: Home(),
     );
   }

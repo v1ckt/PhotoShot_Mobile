@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       child: CustomScaffold(
-        appBar: buildAppBar('search'),
+        appBar: buildAppBar('home'),
         body: ListView(
           children: [
             const Padding(

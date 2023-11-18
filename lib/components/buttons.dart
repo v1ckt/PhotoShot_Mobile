@@ -78,15 +78,18 @@ class PopUpBtn extends StatelessWidget {
   final bool wide;
   final String label;
   final Widget icon;
+  final dynamic labelcolor;
 
-  const PopUpBtn({
+  PopUpBtn({
     Key? key,
     Widget? icon,
     bool? wide,
     String? label,
+    dynamic labelcolor,
   })  : icon = icon ?? const Icon(Icons.abc_outlined, size: 26),
         wide = wide ?? false,
         label = label ?? 'Label',
+        labelcolor = labelcolor ?? Colors.grey[800],
         super(key: key);
 
   @override
@@ -107,8 +110,9 @@ class PopUpBtn extends StatelessWidget {
               const SizedBox(width: 20),
               Text(
                 label,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
+                  color: labelcolor,
                 ),
               ),
             ],
