@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Comment extends StatelessWidget {
-  String comment, username;
+  final String comment, username;
 
-  Comment({Key? key, required this.comment, required this.username})
+  const Comment({Key? key, required this.comment, required this.username})
       : super(key: key);
 
   @override

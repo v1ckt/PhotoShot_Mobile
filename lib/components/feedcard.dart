@@ -8,8 +8,8 @@ import 'package:photoshot/components/scrollablefilter.dart';
 
 class Feedcard extends StatefulWidget {
   final Map<String, dynamic> userdata;
-  String? state;
-  Feedcard({
+  final String? state;
+  const Feedcard({
     Key? key,
     required this.userdata,
     this.state,
@@ -20,6 +20,7 @@ class Feedcard extends StatefulWidget {
 }
 
 class _FeedcardState extends State<Feedcard> {
+  String state = 'default';
   late Widget _child;
   List<String>? itemsList = [
     'Iluminação',
@@ -58,7 +59,7 @@ class _FeedcardState extends State<Feedcard> {
                 child: ListView(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: false,
-                    children: [
+                    children: const [
                       Comment(
                           comment: 'Caraca, que massa!', username: 'alberto'),
                       Comment(comment: 'Que fofinho!', username: 'figurante'),
@@ -246,9 +247,9 @@ class _FeedcardState extends State<Feedcard> {
                                 onTap: () {
                                   setState(() {
                                     if (widget.state == 'comment') {
-                                      widget.state = 'default';
+                                      state = 'default';
                                     } else {
-                                      widget.state = 'comment';
+                                      state = 'comment';
                                     }
                                   });
                                   _setChild();
@@ -269,9 +270,9 @@ class _FeedcardState extends State<Feedcard> {
                                 onTap: () {
                                   setState(() {
                                     if (widget.state == 'adjust') {
-                                      widget.state = 'default';
+                                      state = 'default';
                                     } else {
-                                      widget.state = 'adjust';
+                                      state = 'adjust';
                                     }
                                   });
                                   _setChild();
