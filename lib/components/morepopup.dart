@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:photoshot/components/buttons.dart';
@@ -11,9 +10,9 @@ class MorePopUp extends StatelessWidget {
     return Container(
           // height: 300,
           padding: const EdgeInsets.only(top: 5, left: 20, right: 20, bottom: 10),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: const BorderRadius.vertical(
+            borderRadius: BorderRadius.vertical(
               top: Radius.circular(20),
             ),
           ),

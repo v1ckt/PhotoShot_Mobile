@@ -43,7 +43,7 @@ class SearchPage extends StatelessWidget {
             Feedcard(userdata: user02),
           ],
         ),
-        bottomNavigationBar: NavBar()
+        bottomNavigationBar: const NavBar()
         );
   }
 }

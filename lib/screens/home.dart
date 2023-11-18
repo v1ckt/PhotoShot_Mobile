@@ -4,6 +4,8 @@ import 'package:photoshot/components/body_elements/topbar.dart';
 import 'package:photoshot/screens/currentscreen.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -11,10 +13,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int indice = 0;
   final List<Widget> telas = [
-    CurrentPage("FEED"),
-    CurrentPage("SEARCH"),
-    CurrentPage("BOOKMARKS"),
-    CurrentPage("PROFILE")
+    const CurrentPage("FEED"),
+    const CurrentPage("SEARCH"),
+    const CurrentPage("BOOKMARKS"),
+    const CurrentPage("PROFILE")
   ];
 
   @override
@@ -22,7 +24,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: buildAppBar('home'),
       body: telas[indice],
-      bottomNavigationBar: NavBar(),
+      bottomNavigationBar: const NavBar(),
     );
   }
 }

@@ -1,19 +1,16 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photoshot/components/buttons.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
 import 'package:photoshot/screens/oldhome.dart';
-import 'package:photoshot/components/morepopup.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -43,11 +40,10 @@ class MyApp extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
         ),
       ),
-      home: const MyHomePage(title: 'Login'),
+      // home: const MyHomePage(title: 'Login'),
       // home: SearchPage(),
-      // home: HomePage(),
+      home: HomePage(),
       // home: Home(),
-      // home: MorePopUp(),
     );
   }
 }
@@ -76,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Topo à base
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               const Logo(size: 40),
               Column(
                 // Formulário

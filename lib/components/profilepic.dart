@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfilePic extends StatefulWidget {
   final Map<String, dynamic>? userdata;
   final int size;
-  ProfilePic({
+  const ProfilePic({
     Key? key,
     Map<String, dynamic>? userdata,
     int? size,

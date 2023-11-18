@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends Scaffold {
-  CustomScaffold({
+  const CustomScaffold({
     Key? key,
     PreferredSizeWidget? appBar,
     Widget? body,

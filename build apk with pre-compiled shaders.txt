@@ -1,0 +1,9 @@
+1 - Executar esse comando e a depuração vai iniciar:
+    flutter run --profile --cache-sksl --purge-persistent-cache
+
+2 - Assim que executar todas as animações e transições possíveis, apertar 'M' para salvar o arquivo .sksl.json
+
+3 - Após a depuração, o arquivo .sksl.json será gerado na pasta do projeto.
+
+4 - Depois, utilizar esse comando para construir o aplicativo com os shaders pré-compilados:
+    flutter build apk --bundle-sksl-path flutter_01.sksl.json

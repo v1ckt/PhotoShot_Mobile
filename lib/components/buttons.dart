@@ -7,7 +7,7 @@ class PrimaryBtn extends StatelessWidget {
   final dynamic onpressed;
 
   const PrimaryBtn(
-      {Key? key,
+      {super.key,
       required this.title,
       double? btnwidth,
       double? btnheight,
@@ -95,7 +95,7 @@ class PopUpBtn extends StatelessWidget {
 
     if (wide == true) {
       child = Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.grey[100],
             borderRadius: BorderRadius.circular(16),

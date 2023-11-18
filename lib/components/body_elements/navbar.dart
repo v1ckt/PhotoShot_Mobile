@@ -55,8 +55,8 @@ class _NavBarState extends State<NavBar> {
               buildNavButton('assets/icons/bookmark.png', 26, () {}),
               InkWell(
                 onTap: () {},
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
+                child: const Padding(
+                  padding: EdgeInsets.all(8),
                   child: ProfilePic(size: 26),
                 ),
               ),

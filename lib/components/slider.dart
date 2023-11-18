@@ -19,7 +19,7 @@ class _ItemSliderState extends State<ItemSlider> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
+        SizedBox(
           height: 16,
           child: Container(
             decoration: ShapeDecoration(
@@ -38,7 +38,7 @@ class _ItemSliderState extends State<ItemSlider> {
           data: SliderTheme.of(context).copyWith(
             activeTrackColor: Colors.transparent,
             inactiveTrackColor: Colors.transparent,
-            trackShape: RoundedRectSliderTrackShape(),
+            trackShape: const RoundedRectSliderTrackShape(),
             trackHeight: 0,
             thumbColor: Colors.white,
             valueIndicatorColor: Colors.transparent,

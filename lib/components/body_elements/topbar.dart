@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
+import 'package:photoshot/components/scrollablefilter.dart';
 
 class TopBar extends StatefulWidget {
   final String state;
@@ -12,6 +13,14 @@ class TopBar extends StatefulWidget {
 }
 
 class Home extends State<TopBar> {
+  List<String> filterList = [
+    'Paisagem',
+    'Retrato',
+    'Animais',
+    'Natureza',
+    'Urbana',
+    'Gestante',
+  ];
   @override
   Widget build(BuildContext context) {
     Widget child;
@@ -20,26 +29,26 @@ class Home extends State<TopBar> {
         child = const Logo(size: 26);
         break;
       case 'search':
-        child = Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-              child: const Column(
-                children: [
-                  PrimaryInput(
-                    title: 'O que você está buscando?',
-                    pass: false,
-                    width: double.infinity,
-                    icone: Icons.search,
-                    color: Color(0x22888888),
-                    fontcolor: Color(0xFF999999),
-                  ),
-                ],
+        child = Container(
+          padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const PrimaryInput(
+                title: 'O que você está buscando?',
+                pass: false,
+                width: double.infinity,
+                icone: Icons.search,
+                color: Color(0x22888888),
+                fontcolor: Color(0xFF999999),
               ),
-            ),
-            // ELEMENTO DE BAIXO
-          ],
+              ScrollableFilter(
+                itemsCount: filterList.length,
+                items: filterList,
+              ),
+            ],
+          ),
+          // ELEMENTO DE BAIXO
         );
         break;
       default:

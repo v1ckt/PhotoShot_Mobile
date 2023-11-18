@@ -119,7 +119,7 @@ class _FeedcardState extends State<Feedcard> {
           child: Column(
             children: [
               const Text('Ajustes da Foto', style: TextStyle(fontSize: 18)),
-              Text('AQUI FICARÁ O SLIDER DE CATEGORIA'),
+              const Text('AQUI FICARÁ O SLIDER DE CATEGORIA'),
               // input
               Container(
                 padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
