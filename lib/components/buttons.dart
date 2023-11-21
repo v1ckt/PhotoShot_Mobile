@@ -130,3 +130,64 @@ class PopUpBtn extends StatelessWidget {
     return child;
   }
 }
+
+class FollowBtn extends StatefulWidget {
+  const FollowBtn({Key? key}) : super(key: key);
+
+  @override
+  _FollowBtnState createState() => _FollowBtnState();
+}
+
+class _FollowBtnState extends State<FollowBtn> {
+  bool followed = false;
+
+  gradient() {
+    if (followed == false) {
+      return const LinearGradient(
+        begin: Alignment(0.98, -0.18),
+        end: Alignment(-0.98, 0.18),
+        colors: [Color(0xFF0400D6), Color(0xFFFF00E5)],
+      );
+    } else {
+      return const LinearGradient(
+        begin: Alignment(0.95, -0.31),
+        end: Alignment(-0.95, 0.31),
+        colors: [
+          Color.fromARGB(119, 255, 113, 241),
+          Color.fromARGB(214, 131, 129, 236),
+        ],
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(41)),
+          border: followed
+              ? Border.fromBorderSide(
+                  BorderSide(width: 1.0, color: Colors.grey[800]!))
+              : const Border.fromBorderSide(
+                  BorderSide(width: 1.0, color: Colors.transparent)),
+          gradient: gradient(),
+        ),
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              followed = !followed;
+            });
+          },
+          child: followed
+              ? Text(
+                  'Seguindo',
+                  style: TextStyle(color: Colors.grey[800]),
+                )
+              : const Text(
+                  'Seguir',
+                  style: TextStyle(color: Colors.white),
+                ),
+        ));
+  }
+}

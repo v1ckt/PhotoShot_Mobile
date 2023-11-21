@@ -35,16 +35,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Viga',
         appBarTheme: const AppBarTheme(
-          toolbarHeight: 70,
           elevation: 0,
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
         ),
       ),
-      // home: const MyHomePage(title: 'Login'),
-      home: SearchPage(),
+      home: const MyHomePage(title: 'Login'),
+      // home: SearchPage(),
       // home: HomePage(),
-      // home: Home(),
     );
   }
 }

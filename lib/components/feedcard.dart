@@ -8,8 +8,8 @@ import 'package:photoshot/components/scrollablefilter.dart';
 
 class Feedcard extends StatefulWidget {
   final Map<String, dynamic> userdata;
-  final String? state;
-  const Feedcard({
+  String? state;
+  Feedcard({
     Key? key,
     required this.userdata,
     this.state,
@@ -201,7 +201,6 @@ class _FeedcardState extends State<Feedcard> {
                 const SizedBox(height: 5),
                 //Foto
                 SizedBox(
-                  height: 200,
                   width: MediaQuery.of(context).size.width * 1,
                   child: Image.network(
                     widget.userdata['photo'],
@@ -247,9 +246,9 @@ class _FeedcardState extends State<Feedcard> {
                                 onTap: () {
                                   setState(() {
                                     if (widget.state == 'comment') {
-                                      state = 'default';
+                                      widget.state = 'default';
                                     } else {
-                                      state = 'comment';
+                                      widget.state = 'comment';
                                     }
                                   });
                                   _setChild();
@@ -270,12 +269,12 @@ class _FeedcardState extends State<Feedcard> {
                                 onTap: () {
                                   setState(() {
                                     if (widget.state == 'adjust') {
-                                      state = 'default';
+                                      widget.state = 'default';
                                     } else {
-                                      state = 'adjust';
+                                      widget.state = 'adjust';
                                     }
+                                    _setChild();
                                   });
-                                  _setChild();
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8),

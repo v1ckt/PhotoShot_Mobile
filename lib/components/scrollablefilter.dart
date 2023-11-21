@@ -50,7 +50,6 @@ class _ScrollableFilterState extends State<ScrollableFilter> {
           },
           child: Container(
             alignment: Alignment.center,
-            height: 100,
             width: itemWidth.toDouble(),
             decoration: BoxDecoration(
               color: selectedIndex == index
