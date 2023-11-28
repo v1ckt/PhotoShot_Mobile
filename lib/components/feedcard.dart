@@ -6,6 +6,7 @@ import 'package:photoshot/components/sliderbox.dart';
 import 'package:photoshot/components/morepopup.dart';
 import 'package:photoshot/components/scrollablefilter.dart';
 
+// ignore: must_be_immutable
 class Feedcard extends StatefulWidget {
   final Map<String, dynamic> userdata;
   String? state;

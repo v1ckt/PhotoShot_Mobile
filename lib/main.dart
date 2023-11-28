@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:photoshot/components/buttons.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
-import 'package:photoshot/screens/oldhome.dart';
-import 'package:photoshot/screens/search.dart';
+import 'package:photoshot/screens/homeApp.dart';
 
 void main() {
   runApp(const MyApp());

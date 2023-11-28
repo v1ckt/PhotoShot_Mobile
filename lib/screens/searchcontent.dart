@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:photoshot/components/body_elements/navbar.dart';
 import 'package:photoshot/components/body_elements/topbar.dart';
 import 'package:photoshot/components/body_elements/customscaffold.dart';
 import 'package:photoshot/components/resultsitem.dart';
@@ -21,8 +20,8 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-        appBar: buildAppBar('search'),
-        body: ResultList(imgList: listimages),
-        bottomNavigationBar: const NavBar());
+        appBar: buildAppBar(topBar: TopBar(state: 'search')),
+        body: ResultList(imgList: listimages)
+        );
   }
 }

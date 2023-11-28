@@ -28,8 +28,8 @@ class Default extends State<ProfilePic> {
         NetworkImage(widget.userdata!['profilepic']), size() - 2,
         Container(
           alignment: Alignment.center,
-          width: size() + 1,
-          height: size() + 1,
+          width: size() + 5,
+          height: size() + 5,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(

@@ -3,11 +3,15 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ResultList extends StatelessWidget {
   final List<String>? imgList;
-  const ResultList({Key? key, this.imgList}) : super(key: key);
+  final ScrollController? scrollController;
+
+  const ResultList({Key? key, this.imgList, this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StaggeredGridView.countBuilder(
+      controller: scrollController,
       crossAxisCount: 2,
       itemCount: imgList!.length,
       itemBuilder: (BuildContext context, int index) {

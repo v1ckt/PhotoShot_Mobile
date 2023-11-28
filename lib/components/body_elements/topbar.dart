@@ -8,19 +8,21 @@ import 'package:photoshot/components/buttons.dart';
 
 class TopBar extends StatefulWidget {
   final int? blurLevel;
-  final int? theight;
-  final String state;
-  const TopBar({Key? key, required this.state, int? blurLevel, this.theight})
+  final String? state;
+  final bool? isMy;
+  const TopBar({Key? key, int? blurLevel, String? state, bool? isMy})
       : blurLevel = blurLevel ?? 30,
+        state = state ?? 'home',
+        isMy = isMy ?? false,
         super(key: key);
 
   @override
   Home createState() => Home();
 }
 
-int topbarheight = 60;
-
 class Home extends State<TopBar> {
+  String? state = 'home';
+  // bool isExpanded = false;
   List<String> filterList = [
     'Tudo',
     'Paisagem',
@@ -48,14 +50,24 @@ class Home extends State<TopBar> {
 
     double blur = widget.blurLevel!.toDouble();
     dynamic child;
+    state = widget.state;
+    myProfile() {
+      return widget.isMy!
+        ? [IconButton(
+            onPressed: () => null,
+            icon: const Icon(Icons.settings_outlined),
+          ), SizedBox(width: 10)]
+        : [IconButton(
+            onPressed: () => null,
+            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          ), FollowBtn()];
+    }
 
-    switch (widget.state) {
+    switch (state) {
       case 'home':
-        topbarheight = 60;
         child = const Logo(size: 26);
         break;
       case 'search':
-        topbarheight = 100;
         child = Container(
           padding:
               const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 7),
@@ -81,10 +93,47 @@ class Home extends State<TopBar> {
         );
         break;
       case 'profilecollapsed':
-        topbarheight = 60;
-        child = Container();
+        child = Container(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        myProfile().first,
+                        ProfilePic(
+                          size: 36,
+                          userdata: user02,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          user02['name'],
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 8),
+                      child: myProfile().last,
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.grid_4x4_outlined),
+                    Icon(Icons.info_outline),
+                  ],
+                )
+              ],
+            ));
       case 'profile':
-        topbarheight = 300;
         child = Container(
           padding: const EdgeInsets.all(10),
           width: double.infinity,
@@ -96,11 +145,11 @@ class Home extends State<TopBar> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // primeiro elemento: voltar e seguir
                 children: [
-                  IconButton(
-                    onPressed: () => null,
-                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                  ),
-                  FollowBtn(),
+                  myProfile().first,
+                  Container(
+                    padding: EdgeInsets.only(right: 8),
+                    child: myProfile().last,
+                  )
                 ],
               ),
               // segundo elemento: foto, nome, username e seguidores
@@ -139,43 +188,49 @@ class Home extends State<TopBar> {
           ),
         );
       default:
-        topbarheight = 60;
         child = const Text('Erro');
     }
 
     return Material(
-        elevation: 10,
-        color: Colors.transparent,
-        shadowColor: const Color(0x55000000),
-        child: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-            child: Container(
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color: Color(0xBBFFFFFF),
-                border: Border(
-                  bottom: BorderSide(
-                    width: 1,
-                    color: Color(0xFFAAAAAA),
-                  ),
+      elevation: 10,
+      color: Colors.transparent,
+      shadowColor: const Color(0x55000000),
+      child: ClipRRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: Container(
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              color: Color(0xBBFFFFFF),
+              border: Border(
+                bottom: BorderSide(
+                  width: 1,
+                  color: Color(0xFFAAAAAA),
                 ),
               ),
-              child: SafeArea(child: child),
             ),
+            child: SafeArea(child: child),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
-AppBar buildAppBar(String state) {
+AppBar buildAppBar({required TopBar topBar}) {
   return AppBar(
-      toolbarHeight: topbarheight.toDouble(),
+      toolbarHeight: topBar.state == 'search'
+          ? 100
+          : topBar.state == 'profile'
+              ? 300
+              : topBar.state == 'profilecollapsed'
+                  ? 100
+                  : 60,
       automaticallyImplyLeading: false,
       centerTitle: true,
       backgroundColor: const Color(0x00FFFFFF),
       elevation: 0,
       flexibleSpace: GestureDetector(
-        child: TopBar(state: state),
+        child: topBar,
       ));
 }
