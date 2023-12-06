@@ -24,33 +24,46 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> user01 = {
-      'name': 'João',
-      'profilepic': listimages[5],
-      'photo': listimages[8],
-    };
-    final Map<String, dynamic> user02 = {
-      'name': 'Alberto',
-      'profilepic': listimages[3],
-      'photo': listimages[1],
-    };
-    final Map<String, dynamic> user03 = {
-      'name': 'Maria',
-      'profilepic': listimages[2],
-      'photo': listimages[0],
-    };
+    List<Map<String, dynamic>> list = [
+      {
+        'name': 'Chiara',
+        'profilepic': listimages[5],
+        'photo': listimages[6],
+      },
+      {
+        'name': 'Alberto',
+        'profilepic': listimages[3],
+        'photo': listimages[1],
+      },
+      {
+        'name': 'Pedro',
+        'profilepic': listimages[2],
+        'photo': listimages[0],
+      },
+      {
+        'name': 'Maria',
+        'profilepic': listimages[10],
+        'photo': listimages[4],
+      },
+      {
+        'name': 'Karol',
+        'profilepic': listimages[7],
+        'photo': listimages[8],
+      },
+      {
+        'name': 'Caio',
+        'profilepic': listimages[10],
+        'photo': listimages[9],
+      }
+    ];
+
     return CustomScaffold(
       appBar: buildAppBar(topBar: TopBar(state: 'home')),
       body: Expanded(
-        child: ListView(
-          children: [
-            SizedBox(height: 10),
-            Feedcard(userdata: user01),
-            Feedcard(userdata: user02),
-            Feedcard(userdata: user03),
-          ],
-        ),
-      ),
+          child: ListView.separated(
+              itemBuilder: (context, index) => Feedcard(userdata: list[index]),
+              separatorBuilder: (context, index) => SizedBox(height: 10),
+              itemCount: list.length)),
     );
   }
 }

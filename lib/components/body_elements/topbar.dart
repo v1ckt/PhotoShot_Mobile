@@ -232,5 +232,6 @@ AppBar buildAppBar({required TopBar topBar}) {
       elevation: 0,
       flexibleSpace: GestureDetector(
         child: topBar,
-      ));
+      ),
+      );
 }
