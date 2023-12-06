@@ -74,7 +74,7 @@ class _NavBarState extends State<NavBar> {
               buildNavButton('assets/icons/search.png', 26, 1, null),
               buildNavButton('assets/icons/camera.png', 26, 2, null),
               buildNavButton('assets/icons/bookmark.png', 26, 3, null),
-              buildNavButton(null, 26, 4, ProfilePic(size: 26))
+              buildNavButton(null, 26, 4, const ProfilePic(size: 26))
             ],
           ),
         ),

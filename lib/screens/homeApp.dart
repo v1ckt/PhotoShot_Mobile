@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:photoshot/components/body_elements/navbar.dart';
 import 'package:photoshot/components/body_elements/customscaffold.dart';
@@ -8,7 +9,7 @@ import 'package:photoshot/screens/profilecontent.dart';
 
 class HomePage extends StatefulWidget {
   // construtor
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     HomeContent(),
     SearchPage(),
     Container(),
-    Container(child: Text('SAVED')),
+    const Text('SAVED'),
     ProfilePage(),
   ];
 
@@ -28,9 +29,9 @@ class _HomePageState extends State<HomePage> {
     if (index == 2) {
       showModalBottomSheet(
         context: context,
-        builder: (context) => Container(
+        builder: (context) => const SizedBox(
           height: 100,
-          child: const Center(
+          child: Center(
             child: Text('ButtonOption'),
           ),
         ),

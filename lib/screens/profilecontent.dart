@@ -65,8 +65,8 @@ class _ProfilePAgeState extends State<ProfilePage> {
     return CustomScaffold(
         appBar: PreferredSize(
           preferredSize: Size.copy(_isScrolled
-              ? Size(double.infinity, 120)
-              : Size(double.infinity, 300)),
+              ? const Size(double.infinity, 120)
+              : const Size(double.infinity, 300)),
           child: buildAppBar(
             topBar: TopBar(
               state: !_isScrolled ? 'profile' : 'profilecollapsed',

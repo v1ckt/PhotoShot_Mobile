@@ -31,7 +31,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-        appBar: buildAppBar(topBar: TopBar(state: 'search')),
+        appBar: buildAppBar(topBar: const TopBar(state: 'search')),
         body: ResultList(imgList: listimages)
         );
   }

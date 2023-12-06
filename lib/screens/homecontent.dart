@@ -58,11 +58,11 @@ class HomeContent extends StatelessWidget {
     ];
 
     return CustomScaffold(
-      appBar: buildAppBar(topBar: TopBar(state: 'home')),
+      appBar: buildAppBar(topBar: const TopBar(state: 'home')),
       body: Expanded(
           child: ListView.separated(
               itemBuilder: (context, index) => Feedcard(userdata: list[index]),
-              separatorBuilder: (context, index) => SizedBox(height: 10),
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
               itemCount: list.length)),
     );
   }

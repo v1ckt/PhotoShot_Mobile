@@ -54,13 +54,13 @@ class Home extends State<TopBar> {
     myProfile() {
       return widget.isMy!
         ? [IconButton(
-            onPressed: () => null,
+            onPressed: () {},
             icon: const Icon(Icons.settings_outlined),
-          ), SizedBox(width: 10)]
+          ), const SizedBox(width: 10)]
         : [IconButton(
-            onPressed: () => null,
+            onPressed: () {},
             icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          ), FollowBtn()];
+          ), const FollowBtn()];
     }
 
     switch (state) {
@@ -111,7 +111,7 @@ class Home extends State<TopBar> {
                           size: 36,
                           userdata: user02,
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           user02['name'],
                           style: const TextStyle(fontSize: 18),
@@ -119,12 +119,12 @@ class Home extends State<TopBar> {
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.only(right: 8),
+                      padding: const EdgeInsets.only(right: 8),
                       child: myProfile().last,
                     )
                   ],
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Icon(Icons.grid_4x4_outlined),
@@ -147,7 +147,7 @@ class Home extends State<TopBar> {
                 children: [
                   myProfile().first,
                   Container(
-                    padding: EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.only(right: 8),
                     child: myProfile().last,
                   )
                 ],
