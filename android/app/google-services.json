@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "93182552978",
+    "project_id": "photoshot-e464d",
+    "storage_bucket": "photoshot-e464d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93182552978:android:c9b3c4f0a4c2346fd46f4b",
+        "android_client_info": {
+          "package_name": "com.example.photoshot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFQNeGMas2e_E4aR1Rq6cT_PfQue3h248"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
