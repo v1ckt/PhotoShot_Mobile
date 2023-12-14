@@ -5,7 +5,7 @@ import 'package:photoshot/components/body_elements/navbar.dart';
 import 'package:photoshot/components/body_elements/customscaffold.dart';
 import 'package:photoshot/screens/searchcontent.dart';
 import 'package:photoshot/screens/homecontent.dart';
-import 'package:photoshot/screens/profilecontent.dart';
+import 'package:photoshot/screens/myprofilecontent.dart';
 
 class HomePage extends StatefulWidget {
   // construtor
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     SearchPage(),
     Container(),
     const Text('SAVED'),
-    ProfilePage(),
+    MyProfilePage(),
   ];
 
   void _onItemTaped(int index) {

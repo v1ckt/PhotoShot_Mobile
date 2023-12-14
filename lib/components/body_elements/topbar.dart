@@ -5,6 +5,7 @@ import 'package:photoshot/components/logo.dart';
 import 'package:photoshot/components/scrollablefilter.dart';
 import 'package:photoshot/components/profilepic.dart';
 import 'package:photoshot/components/buttons.dart';
+import 'package:photoshot/screens/settings.dart';
 
 class TopBar extends StatefulWidget {
   final int? blurLevel;
@@ -32,6 +33,10 @@ class Home extends State<TopBar> {
     'Urbana',
     'Gestante',
   ];
+  List<Widget> opFilterList = [
+    Icon(Icons.grid_4x4_outlined, size: 20),
+    Icon(Icons.info_outline, size: 20)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,19 +58,41 @@ class Home extends State<TopBar> {
     state = widget.state;
     myProfile() {
       return widget.isMy!
-        ? [IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings_outlined),
-          ), const SizedBox(width: 10)]
-        : [IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          ), const FollowBtn()];
+          ? [
+              IconButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsPage(),
+                    )),
+                icon: const Icon(Icons.settings_outlined),
+              ),
+              const SizedBox(width: 10)
+            ]
+          : [
+              IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              ),
+              const FollowBtn()
+            ];
     }
 
     switch (state) {
       case 'home':
         child = const Logo(size: 26);
+        break;
+      case 'settings':
+        child = Row(
+          children: [
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+            ),
+            const SizedBox(width: 10),
+            const Text('Configurações', style: TextStyle(fontSize: 26, color: Color(0xFF444444)))
+          ],
+        );
         break;
       case 'search':
         child = Container(
@@ -124,13 +151,11 @@ class Home extends State<TopBar> {
                     )
                   ],
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(Icons.grid_4x4_outlined),
-                    Icon(Icons.info_outline),
-                  ],
-                )
+                ScrollableFilter(
+                  itemsCount: filterList.length,
+                  items: opFilterList,
+                  isWide: true,
+                ),
               ],
             ));
       case 'profile':
@@ -177,12 +202,10 @@ class Home extends State<TopBar> {
                 ],
               ),
               // ABAS
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(Icons.grid_4x4_outlined),
-                  Icon(Icons.info_outline),
-                ],
+              ScrollableFilter(
+                itemsCount: filterList.length,
+                items: opFilterList,
+                isWide: true,
               ),
             ],
           ),
@@ -219,19 +242,19 @@ class Home extends State<TopBar> {
 
 AppBar buildAppBar({required TopBar topBar}) {
   return AppBar(
-      toolbarHeight: topBar.state == 'search'
-          ? 100
-          : topBar.state == 'profile'
-              ? 300
-              : topBar.state == 'profilecollapsed'
-                  ? 100
-                  : 60,
-      automaticallyImplyLeading: false,
-      centerTitle: true,
-      backgroundColor: const Color(0x00FFFFFF),
-      elevation: 0,
-      flexibleSpace: GestureDetector(
-        child: topBar,
-      ),
-      );
+    toolbarHeight: topBar.state == 'search'
+        ? 100
+        : topBar.state == 'profile'
+            ? 300
+            : topBar.state == 'profilecollapsed'
+                ? 100
+                : 72,
+    automaticallyImplyLeading: false,
+    centerTitle: true,
+    backgroundColor: const Color(0x00FFFFFF),
+    elevation: 0,
+    flexibleSpace: GestureDetector(
+      child: topBar,
+    ),
+  );
 }

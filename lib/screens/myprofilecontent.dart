@@ -3,7 +3,7 @@ import 'package:photoshot/components/body_elements/topbar.dart';
 import 'package:photoshot/components/body_elements/customscaffold.dart';
 import 'package:photoshot/components/resultsitem.dart';
 
-class ProfilePage extends StatefulWidget {
+class MyProfilePage extends StatefulWidget {
   final List<String> listimages = [
     'https://picsum.photos/id/237/200/300',
     'https://picsum.photos/id/238/200/300',
@@ -26,13 +26,13 @@ class ProfilePage extends StatefulWidget {
     "https://images.unsplash.com/photo-1496551729338-fa0c71a2c950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQwfHxwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D",
   ];
 
-  ProfilePage({super.key});
+  MyProfilePage({super.key});
 
   @override
   _ProfilePAgeState createState() => _ProfilePAgeState();
 }
 
-class _ProfilePAgeState extends State<ProfilePage> {
+class _ProfilePAgeState extends State<MyProfilePage> {
   final ScrollController _scrollController = ScrollController();
   bool _isScrolled = false;
 
@@ -69,7 +69,8 @@ class _ProfilePAgeState extends State<ProfilePage> {
               : const Size(double.infinity, 300)),
           child: buildAppBar(
             topBar: TopBar(
-              state: !_isScrolled ? 'profile' : 'profilecollapsed'
+              state: !_isScrolled ? 'profile' : 'profilecollapsed',
+              isMy: true,
             ),
           ),
         ),

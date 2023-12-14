@@ -7,7 +7,7 @@ class ProfilePic extends StatefulWidget {
     Key? key,
     Map<String, dynamic>? userdata,
     int? size,
-  })  : userdata = userdata ?? const {'name': 'João', 'profilepic': null},
+  })  : userdata = userdata ?? const {'name': 'none', 'profilepic': null},
         size = size ?? 32,
         super(key: key);
 

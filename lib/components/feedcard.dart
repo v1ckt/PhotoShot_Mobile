@@ -5,6 +5,7 @@ import 'package:photoshot/components/comment.dart';
 import 'package:photoshot/components/sliderbox.dart';
 import 'package:photoshot/components/morepopup.dart';
 import 'package:photoshot/components/scrollablefilter.dart';
+import 'package:photoshot/screens/profilecontent.dart';
 
 // ignore: must_be_immutable
 class Feedcard extends StatefulWidget {
@@ -327,35 +328,46 @@ class _FeedcardState extends State<Feedcard> {
         Positioned(
           // Foto de perfil
           top: 0,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: 52,
-                height: 52,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    colors: [Color(0xFFFF00E5), Color(0xFF0400D7)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  width: 52,
+                  height: 52,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFFF00E5), Color(0xFF0400D7)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                width: 46,
-                height: 46,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(widget.userdata['profilepic']),
-                    fit: BoxFit.cover,
+                Container(
+                  alignment: Alignment.center,
+                  width: 46,
+                  height: 46,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(widget.userdata['profilepic']),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

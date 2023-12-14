@@ -1,16 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photoshot/components/buttons.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
+import 'package:photoshot/database/controllers/usercontroller.dart';
+import 'package:photoshot/database/users/usuario.dart';
+import 'package:photoshot/firebase_options.dart';
 import 'package:photoshot/screens/homeApp.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
-Future<void> main() async {
-  await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  Usuario user01 = Usuario(
+    id: '2',
+    nome: 'Alberto',
+    username: 'albertin',
+    profilepic: 'assets/images/profilepic.png',
+  );
+  UserController userController = UserController();
+  dynamic a = userController.getUser(user01.id);
+  a.then((value) => print(value.nome));
+
   runApp(const MyApp());
 }
 
