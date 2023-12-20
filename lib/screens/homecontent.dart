@@ -4,7 +4,8 @@ import 'package:photoshot/components/body_elements/customscaffold.dart';
 import 'package:photoshot/components/feedcard.dart';
 
 class HomeContent extends StatelessWidget {
-  HomeContent({super.key});
+  final String id;
+  HomeContent({super.key, required this.id});
 
   final List<String> listimages = [
     "https://plus.unsplash.com/premium_photo-1681996735353-df9e1e4085b9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEzfHxwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D",
@@ -60,9 +61,9 @@ class HomeContent extends StatelessWidget {
     return CustomScaffold(
       appBar: buildAppBar(topBar: const TopBar(state: 'home')),
       body: ListView.separated(
-              itemBuilder: (context, index) => Feedcard(userdata: list[index]),
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: list.length),
+          itemBuilder: (context, index) => Feedcard(userdata: list[index]),
+          separatorBuilder: (context, index) => const SizedBox(height: 10),
+          itemCount: list.length),
     );
   }
 }

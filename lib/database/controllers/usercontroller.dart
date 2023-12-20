@@ -4,7 +4,7 @@ import 'package:photoshot/database/users/usuario.dart';
 class UserController extends Usuario {
   late CollectionReference usuario;
 
-  UserController():super(id: '', nome: '', username: '', profilepic: ''){
+  UserController():super(id: '', nome: '', username: '', profilepic: '', email:''){
     usuario = FirebaseFirestore.instance.collection('Usuario');
   }
 
@@ -14,6 +14,7 @@ class UserController extends Usuario {
       'nome': usuario.nome,
       'username': usuario.username,
       'profilepic': usuario.profilepic,
+      'email': usuario.email
     });
   }
   removeUser(Usuario usuario) async {
@@ -34,6 +35,7 @@ class UserController extends Usuario {
       nome: doc['nome'],
       username: doc['username'],
       profilepic: doc['profilepic'],
+      email: doc['email']
     );
   }
   Future<List<Usuario>> getAll() async {
@@ -45,6 +47,7 @@ class UserController extends Usuario {
           nome: doc['nome'],
           username: doc['username'],
           profilepic: doc['profilepic'],
+          email: doc['email']
         ));
       });
       return list;

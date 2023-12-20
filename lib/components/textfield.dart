@@ -5,11 +5,13 @@ class PrimaryInput extends StatelessWidget {
   final bool pass;
   final dynamic width, height, icone, color, fontcolor;
   final double? textsize;
+  final TextEditingController controller;
 
-  const PrimaryInput(
+  PrimaryInput(
       {super.key,
       required this.title,
       required this.pass,
+      TextEditingController? controller,
       width,
       double? textsize,
       color,
@@ -19,6 +21,7 @@ class PrimaryInput extends StatelessWidget {
       : width = width ?? 300,
         height = height ?? 50,
         textsize = textsize ?? 20,
+        controller = controller ?? TextEditingController(),
         color = color ?? const Color(0xFFF5F5F5),
         fontcolor = fontcolor ?? const Color(0xFFBDBDBD);
 
@@ -36,6 +39,7 @@ class PrimaryInput extends StatelessWidget {
         ),
       ),
       child: TextField(
+        controller: controller,
         textAlignVertical: TextAlignVertical.center,
         obscureText: pass,
         style: TextStyle(

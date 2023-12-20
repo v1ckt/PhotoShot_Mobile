@@ -106,7 +106,7 @@ class _FeedcardState extends State<Feedcard> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(left: 15),
-                        child: const PrimaryInput(
+                        child: PrimaryInput(
                           title: 'Adicione um comentário',
                           pass: false,
                           height: 40,

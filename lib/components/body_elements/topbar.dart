@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:photoshot/components/textfield.dart';
 import 'package:photoshot/components/logo.dart';
@@ -101,7 +102,7 @@ class Home extends State<TopBar> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const PrimaryInput(
+              PrimaryInput(
                 title: 'O que você está buscando?',
                 pass: false,
                 textsize: 16,

@@ -8,8 +8,9 @@ import 'package:photoshot/screens/homecontent.dart';
 import 'package:photoshot/screens/myprofilecontent.dart';
 
 class HomePage extends StatefulWidget {
+  final String id;
   // construtor
-  const HomePage({super.key});
+  HomePage({super.key, required this.id});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -17,13 +18,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ValueNotifier<int> _pageIndexNotifier = ValueNotifier<int>(0);
-  final List<Widget> _pages = [
-    HomeContent(),
+  late List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+    HomeContent(id: widget.id),
     SearchPage(),
     Container(),
     const Text('SAVED'),
     MyProfilePage(),
   ];
+  }
 
   void _onItemTaped(int index) {
     if (index == 2) {
